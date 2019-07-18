@@ -5,6 +5,8 @@ package warehouse_test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import addType.*;
+
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -16,7 +18,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import page.exportProduct;
+import page.importProduct;
+import page.searchPage;
 
 /**
  *
@@ -35,8 +41,7 @@ public class WareHouse_Test extends javax.swing.JFrame {
         initComponents();
 
         Sql s = new Sql();
-        s.loadcombo(additem_combox);
-        s.Select_BigItem(addBigitem_combox);
+
         s.Select_MaterialItem(Materials_combox);
         s.loadcombo(item_combox);
         s.Select_BigItem(Bigitem_combox);
@@ -90,25 +95,12 @@ public class WareHouse_Test extends javax.swing.JFrame {
         jMenuBar4 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
-        additem_combox = new javax.swing.JComboBox<>();
-        additem_btn = new javax.swing.JButton();
-        additem_TFile = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
-        addBigitem_combox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         in_total_btn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        addBigitem_TFile = new javax.swing.JTextField();
-        addBigitem_btn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        addmaterial_TFile = new javax.swing.JTextField();
-        addmaterial_btn = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         Materials_combox = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -140,6 +132,14 @@ public class WareHouse_Test extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         Menu = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        menu_addLargeProject = new javax.swing.JMenuItem();
+        menu_addItem = new javax.swing.JMenuItem();
+        menu_addMaterial = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -162,37 +162,6 @@ public class WareHouse_Test extends javax.swing.JFrame {
         jMenuBar4.add(jMenu7);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                formKeyTyped(evt);
-            }
-        });
-
-        additem_combox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                additem_comboxActionPerformed(evt);
-            }
-        });
-
-        additem_btn.setText("新  增");
-        additem_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                additem_btnActionPerformed(evt);
-            }
-        });
-
-        additem_TFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                additem_TFileActionPerformed(evt);
-            }
-        });
-        additem_TFile.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                additem_TFileKeyReleased(evt);
-            }
-        });
-
-        jLabel1.setText("請輸入分類名稱：");
 
         jLabel2.setText("進貨金額：");
 
@@ -203,23 +172,6 @@ public class WareHouse_Test extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("請輸入大項目名稱：");
-
-        addBigitem_TFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBigitem_TFileActionPerformed(evt);
-            }
-        });
-
-        addBigitem_btn.setText("新  增");
-        addBigitem_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBigitem_btnActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("大項目新增結果");
-
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("大項目：");
 
@@ -228,23 +180,6 @@ public class WareHouse_Test extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("物　料:");
-
-        jLabel9.setText("請輸入新增物料名稱：");
-
-        addmaterial_btn.setText("新增");
-        addmaterial_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addmaterial_btnActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("物料名稱新增結果");
-
-        Materials_combox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Materials_comboxActionPerformed(evt);
-            }
-        });
 
         jLabel11.setText("進貨日期時間：");
 
@@ -363,6 +298,67 @@ public class WareHouse_Test extends javax.swing.JFrame {
         jMenuBar2.add(jMenu8);
 
         Menu.setText("Edit");
+
+        jMenu9.setText("addType");
+
+        menu_addLargeProject.setText("addLargeProject");
+        menu_addLargeProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_addLargeProjectActionPerformed(evt);
+            }
+        });
+        jMenu9.add(menu_addLargeProject);
+
+        menu_addItem.setText("addItem");
+        menu_addItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_addItemActionPerformed(evt);
+            }
+        });
+        jMenu9.add(menu_addItem);
+
+        menu_addMaterial.setText("addMaterial");
+        menu_addMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_addMaterialActionPerformed(evt);
+            }
+        });
+        jMenu9.add(menu_addMaterial);
+
+        Menu.add(jMenu9);
+
+        jMenuItem2.setText("testImport");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        Menu.add(jMenuItem2);
+
+        jMenuItem3.setText("testexport");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        Menu.add(jMenuItem3);
+
+        jMenuItem4.setText("testSearch");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        Menu.add(jMenuItem4);
+
+        jMenuItem5.setText("testHOME");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        Menu.add(jMenuItem5);
+
         jMenuBar2.add(Menu);
 
         setJMenuBar(jMenuBar2);
@@ -371,53 +367,27 @@ public class WareHouse_Test extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(test)
+                    .addGap(459, 459, 459))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(653, 653, 653)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(additem_TFile, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addBigitem_TFile, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(addmaterial_TFile, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(additem_combox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addBigitem_combox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(additem_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addBigitem_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(addmaterial_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel10))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(test)
-                        .addGap(459, 459, 459))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(in_total_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(out_total_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(outputExcel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(search_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89)
-                                .addComponent(Label2))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(recycle_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(in_total_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(out_total_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(outputExcel_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(search_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(89, 89, 89)
+                            .addComponent(Label2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(recycle_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -481,53 +451,23 @@ public class WareHouse_Test extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(in_total_btn)
+                            .addComponent(search_btn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Label2)
-                                .addGap(105, 105, 105))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(addBigitem_btn)
-                                            .addComponent(jLabel5))
-                                        .addGap(13, 13, 13)
-                                        .addComponent(additem_btn)
-                                        .addGap(23, 23, 23))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(in_total_btn)
-                                            .addComponent(search_btn))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(out_total_btn)
-                                            .addComponent(recycle_btn))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(outputExcel_btn)
-                                        .addComponent(jButton2))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(addBigitem_TFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(additem_TFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addBigitem_combox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(out_total_btn)
+                            .addComponent(recycle_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addmaterial_TFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(additem_combox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addmaterial_btn))))
+                            .addComponent(outputExcel_btn)
+                            .addComponent(jButton2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Label2)
+                        .addGap(105, 105, 105)))
                 .addGap(12, 12, 12)
                 .addComponent(test)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -575,134 +515,15 @@ public class WareHouse_Test extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(234, Short.MAX_VALUE))
+                        .addContainerGap(228, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void additem_comboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additem_comboxActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_additem_comboxActionPerformed
-
-    private void additem_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additem_btnActionPerformed
-        // TODO add your handling code here:
-        String item_text = additem_TFile.getText();
-        Sql s = new Sql();
-
-        int type = addBigitem_combox.getSelectedIndex();
-        type++;
-        if (item_text.length() > 0) {
-            if (s.SelectCheck_Item(item_text) > 0) {
-                additem_TFile.setText("");
-                JOptionPane.showConfirmDialog(null, "新增失敗，已有這個選項", "新增失敗",
-                         JOptionPane.DEFAULT_OPTION,
-                         JOptionPane.WARNING_MESSAGE);
-            } else {
-                s.inser_Item(item_text, type);
-                additem_TFile.setText("");
-
-                JOptionPane.showConfirmDialog(null, "新增成功", "新增成功",
-                         JOptionPane.DEFAULT_OPTION,
-                         JOptionPane.DEFAULT_OPTION);
-            }
-        } else if (item_text.length() == 0 || item_text.equals("  ")) {
-            JOptionPane.showConfirmDialog(null, "欄位不可為空，請重新輸入", "新增失敗",
-                     JOptionPane.DEFAULT_OPTION,
-                     JOptionPane.ERROR_MESSAGE);
-        }
-        additem_combox.removeAllItems();
-        s.loadcombo(additem_combox);
-        item_combox.removeAllItems();
-        s.loadcombo(item_combox);
-
-
-    }//GEN-LAST:event_additem_btnActionPerformed
-
-    private void additem_TFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additem_TFileActionPerformed
-
-    }//GEN-LAST:event_additem_TFileActionPerformed
-
-    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
-
-    }//GEN-LAST:event_formKeyTyped
-
-    private void additem_TFileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_additem_TFileKeyReleased
-        // TODO add your handling code here:
-        int key1 = evt.getKeyCode();
-        switch (key1) {
-
-            case KeyEvent.VK_ENTER:
-                additem_btn.doClick();
-        }
-    }//GEN-LAST:event_additem_TFileKeyReleased
-
-    private void addBigitem_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBigitem_btnActionPerformed
-        // TODO add your handling code here:
-        String item_text = addBigitem_TFile.getText();
-        Sql s = new Sql();
-
-        if (item_text.length() > 0) {
-            if (s.SelectCheck_BigItem(item_text) > 0) {
-                additem_TFile.setText("");
-                JOptionPane.showConfirmDialog(null, "新增失敗，已有這個選項", "新增失敗",
-                         JOptionPane.DEFAULT_OPTION,
-                         JOptionPane.WARNING_MESSAGE);
-            } else {
-                s.inser_BigItem(item_text);
-                addBigitem_TFile.setText("");
-
-                JOptionPane.showConfirmDialog(null, "新增成功", "新增成功",
-                         JOptionPane.DEFAULT_OPTION,
-                         JOptionPane.DEFAULT_OPTION);
-            }
-        } else if (item_text.length() == 0 || item_text.equals("  ")) {
-            JOptionPane.showConfirmDialog(null, "欄位不可為空，請重新輸入", "新增失敗",
-                     JOptionPane.DEFAULT_OPTION,
-                     JOptionPane.ERROR_MESSAGE);
-        }
-
-        addBigitem_combox.removeAllItems();
-        s.Select_BigItem(addBigitem_combox);
-    }//GEN-LAST:event_addBigitem_btnActionPerformed
-
-    private void addmaterial_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addmaterial_btnActionPerformed
-        // TODO add your handling code here:
-        String item_text = addmaterial_TFile.getText();
-        Sql s = new Sql();
-
-        int type = additem_combox.getSelectedIndex();
-        type++;
-        if (item_text.length() > 0) {
-            s.insert_Material(item_text, type);
-            addmaterial_TFile.setText("");
-            jLabel10.setText("新增成功");
-            JOptionPane.showConfirmDialog(null, "物料新增成功", "新增成功",
-                     JOptionPane.DEFAULT_OPTION,
-                     JOptionPane.ERROR_MESSAGE);
-
-        } else if (item_text.length() == 0) {
-            jLabel10.setText("欄位不可為空，請重新輸入");
-
-            JOptionPane.showConfirmDialog(null, "物料欄位不可為空，請重新輸入", "新增失敗",
-                     JOptionPane.DEFAULT_OPTION,
-                     JOptionPane.ERROR_MESSAGE);
-
-        }
-        Materials_combox.removeAllItems();
-        s.Select_MaterialItem(Materials_combox);
-
-    }//GEN-LAST:event_addmaterial_btnActionPerformed
-
-    private void Materials_comboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Materials_comboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Materials_comboxActionPerformed
 
     private void item_comboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_comboxActionPerformed
         // TODO add your handling code here:
@@ -843,12 +664,10 @@ public class WareHouse_Test extends javax.swing.JFrame {
     private void recycle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recycle_btnActionPerformed
         // TODO add your handling code here:
         Sql s = new Sql();
-        addBigitem_combox.removeAllItems();
-        s.Select_BigItem(addBigitem_combox);
+
         Materials_combox.removeAllItems();
         s.Select_MaterialItem(Materials_combox);
-        additem_combox.removeAllItems();
-        s.loadcombo(additem_combox);
+
         item_combox.removeAllItems();
         s.loadcombo(item_combox);
 
@@ -895,9 +714,57 @@ public class WareHouse_Test extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void addBigitem_TFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBigitem_TFileActionPerformed
+    private void menu_addLargeProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_addLargeProjectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addBigitem_TFileActionPerformed
+        addLargeProject addType = new addLargeProject();
+        addType.setVisible(true);
+        addType.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_menu_addLargeProjectActionPerformed
+
+    private void menu_addItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_addItemActionPerformed
+        // TODO add your handling code here:
+        addItem addItem = new addItem();
+        addItem.setVisible(true);
+        addItem.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        
+    }//GEN-LAST:event_menu_addItemActionPerformed
+
+    private void menu_addMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_addMaterialActionPerformed
+        // TODO add your handling code here:
+        addMaterial addMaterial = new addMaterial();
+        addMaterial.setVisible(true);
+        addMaterial.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_menu_addMaterialActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        importProduct ip = new importProduct();
+        ip.setVisible(true);
+        ip.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        exportProduct ep = new exportProduct();
+        ep.setVisible(true);
+        ep.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        searchPage search = new searchPage();
+        search.setVisible(true);
+        search.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        search.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        homePage home = new homePage();
+        home.setVisible(true);
+        home.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -943,14 +810,6 @@ public class WareHouse_Test extends javax.swing.JFrame {
     private javax.swing.JLabel Label2;
     private javax.swing.JComboBox<String> Materials_combox;
     private javax.swing.JMenu Menu;
-    private javax.swing.JTextField addBigitem_TFile;
-    private javax.swing.JButton addBigitem_btn;
-    private javax.swing.JComboBox<String> addBigitem_combox;
-    private javax.swing.JTextField additem_TFile;
-    private javax.swing.JButton additem_btn;
-    private javax.swing.JComboBox<String> additem_combox;
-    private javax.swing.JTextField addmaterial_TFile;
-    private javax.swing.JButton addmaterial_btn;
     private javax.swing.JTextField company_TFile;
     private javax.swing.JComboBox<String> department_combox;
     private javax.swing.JTextField in_quantity_TFile;
@@ -959,8 +818,6 @@ public class WareHouse_Test extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> in_type_combox;
     private javax.swing.JComboBox<String> item_combox;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -968,12 +825,9 @@ public class WareHouse_Test extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -982,15 +836,23 @@ public class WareHouse_Test extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JMenuItem menu_addItem;
+    private javax.swing.JMenuItem menu_addLargeProject;
+    private javax.swing.JMenuItem menu_addMaterial;
     private javax.swing.JTextField money_TFile;
     private javax.swing.JTextField out_quantity_TFile;
     private javax.swing.JSpinner out_time_spin;

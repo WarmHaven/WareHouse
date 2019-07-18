@@ -29,6 +29,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import page.searchPage;
 import warehouse_test.WareHouse_Test.*;
 
 /**
@@ -73,7 +74,7 @@ public class Excel {
             
             HSSFSheet sheet = book.getSheetAt(index);
 
-            WareHouse_Test wt = new WareHouse_Test();
+            searchPage wt = new searchPage();
 
             DefaultTableModel dm;
             dm = wt.getdata();

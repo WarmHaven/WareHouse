@@ -77,7 +77,7 @@ public class Sql {
     private String select_name = "SELECT * FROM account WHERE name LIKE ";
 
     //=========================================================================    
-    Sql() {
+    public Sql() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             //註冊driver 
